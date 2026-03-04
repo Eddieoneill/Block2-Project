@@ -11,7 +11,7 @@ body {
   height: 10rem;
   grid-template-columns: 30% 40% auto;
   background-color: rgb(172, 169, 32);
-  color: rgb(199, 199, 199);
+  color: rgb(255, 255, 255);
   border-radius: 5rem;
 }
 
@@ -19,4 +19,11 @@ body {
   display: flex;
   align-self: center;
   margin-left: 2rem;
+}
+
+#log-out {
+  place-self: center;
+  justify-self: end;
+  width: 20%;
+  margin-right: 3rem;
 }

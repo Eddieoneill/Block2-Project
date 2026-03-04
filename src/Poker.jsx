@@ -29,7 +29,9 @@ export default function Poker() {
 
   return (
     <div>
-      <button onClick={startNewGame}>New Game</button>
+      <button className="new-game-button" onClick={startNewGame}>
+        New Game
+      </button>
       <div className="card-container">
         <div className="player-hand">
           <DrawCards

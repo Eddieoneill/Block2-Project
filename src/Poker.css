@@ -4,18 +4,41 @@
   gap: 2rem;
   justify-content: center;
   align-content: center;
-  margin-top: 3rem;
+  margin-top: 2%;
 }
 
 .player-hand {
   display: grid;
-  grid-template-columns: repeat(2, 20%);
+  grid-template-columns: repeat(3, 20%);
   justify-content: center;
-  gap: 1%;
+  margin-left: 10rem;
+  gap: 7%;
 }
 
 .center-cards {
   display: grid;
   grid-template-columns: repeat(5, 20%);
   gap: 1%;
+}
+
+.new-game-button {
+  display: flex;
+  height: 2rem;
+  width: 70%;
+  justify-content: center;
+  justify-self: center;
+  place-items: center;
+  border-radius: 2rem;
+  background-color: brown;
+  color: rgb(204, 201, 34);
+  border-color: rgb(190, 190, 190);
+  font-size: 1rem;
+  font-style: oblique;
+  font-weight: bold;
+  margin-top: 0.4%;
+}
+
+.new-game-button:hover {
+  background-color: rgb(131, 33, 33);
+  color: rgb(245, 241, 44);
 }

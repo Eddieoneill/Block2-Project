@@ -25,6 +25,10 @@
   transform: rotateY(180deg);
 }
 
+.card-sleeve:hover {
+  cursor: pointer;
+}
+
 .back,
 .front {
   position: absolute;

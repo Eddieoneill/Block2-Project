@@ -27,6 +27,9 @@ function App() {
       <nav className="nav-container">
         <h1 id="page-title">Ed's Casino</h1>
         <HomePageButtons />
+        <button className="home-button" id="log-out">
+          Log-Out
+        </button>
       </nav>
 
       <Routes>

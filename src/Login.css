@@ -18,6 +18,7 @@
 
 .login-text {
   height: 2rem;
+  border-radius: 2rem;
 }
 
 .confirm {
@@ -28,6 +29,39 @@
   gap: 5px;
 }
 
-#login #create:hover {
-  background-color: rgb(216, 216, 216);
+.login-title {
+  display: flex;
+  background-color: rgb(204, 201, 34);
+  border: 2px solid rgb(190, 190, 190);
+  color: rgb(255, 255, 255);
+  height: 30%;
+  width: 7rem;
+  margin-right: 3rem;
+  border-radius: 2rem;
+  font-size: 1rem;
+  font-style: oblique;
+  font-weight: bold;
+  place-self: center;
+  justify-content: center;
+}
+
+.login-button {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  justify-self: center;
+  place-items: center;
+  border-radius: 2rem;
+  background-color: brown;
+  color: rgb(204, 201, 34);
+  border-color: rgb(190, 190, 190);
+  font-size: 1rem;
+  font-style: oblique;
+  font-weight: bold;
+}
+
+.login-button:hover {
+  background-color: rgb(131, 33, 33);
+  color: rgb(245, 241, 44);
 }

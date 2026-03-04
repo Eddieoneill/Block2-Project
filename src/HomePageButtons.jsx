@@ -13,7 +13,6 @@ export default function HomePageButtons() {
         Poker
       </button>
       <button className="home-button">Black Jack</button>
-      <button className="home-button">Log-Out</button>
     </div>
   );
 }

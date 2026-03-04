@@ -31,7 +31,7 @@ export default function Login({ setAccount, setIsLoggedIn }) {
     <div className="login-container">
       <div className="grid-container">
         <div className="grid-column">
-          <div>Username: </div>
+          <div className="login-title">Username: </div>
           <input
             className="login-text"
             id="userName"
@@ -40,7 +40,7 @@ export default function Login({ setAccount, setIsLoggedIn }) {
           />
         </div>
         <div className="grid-column">
-          <div>Password: </div>
+          <div className="login-title">Password: </div>
           <input
             className="login-text"
             id="password"
@@ -49,10 +49,10 @@ export default function Login({ setAccount, setIsLoggedIn }) {
           />
         </div>
         <div className="confirm">
-          <button id="login" onClick={buttonPressed}>
+          <button className="login-button" id="login" onClick={buttonPressed}>
             Login
           </button>
-          <button id="create" onClick={buttonPressed}>
+          <button className="login-button" id="create" onClick={buttonPressed}>
             Create
           </button>
         </div>
