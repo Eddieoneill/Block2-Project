@@ -21,7 +21,7 @@
   transform-style: preserve-3d;
 }
 
-.card-sleeve:hover .card-sleeve-inner {
+.card-sleeve.flipped .card-sleeve-inner {
   transform: rotateY(180deg);
 }
 

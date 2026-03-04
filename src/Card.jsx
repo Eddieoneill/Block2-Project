@@ -4,9 +4,10 @@ import "./Card.css";
 export default function Card({ deckId, setUserCards, isFaceUp }) {
   const [currCard, setCurrCard] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isFlipped, setIsFlipped] = useState(false);
 
   const toggleTransform = (event) => {
-    event.target.classList.toggle("transform");
+    setIsFlipped(!isFlipped);
   };
 
   useEffect(() => {
@@ -25,7 +26,10 @@ export default function Card({ deckId, setUserCards, isFaceUp }) {
 
   if (!isFaceUp) {
     return (
-      <div key={currCard.cards[0].code} className="card-sleeve">
+      <div
+        key={currCard.cards[0].code}
+        className={`card-sleeve ${isFlipped ? "flipped" : ""}`}
+      >
         <div className="card-sleeve-inner">
           <div className="front" onClick={toggleTransform}>
             <img
@@ -34,7 +38,7 @@ export default function Card({ deckId, setUserCards, isFaceUp }) {
               alt={currCard.cards[0].code}
             />
           </div>
-          <div className="back">
+          <div className="back" onClick={toggleTransform}>
             <img
               className="card"
               src={currCard.cards[0].image}
@@ -47,16 +51,19 @@ export default function Card({ deckId, setUserCards, isFaceUp }) {
   }
 
   return (
-    <div key={currCard.cards[0].code} className="card-sleeve">
+    <div
+      key={currCard.cards[0].code}
+      className={`card-sleeve ${isFlipped ? "flipped" : ""}`}
+    >
       <div className="card-sleeve-inner">
-        <div className="back">
+        <div className="back" onClick={toggleTransform}>
           <img
             className="card"
             src="https://deckofcardsapi.com/static/img/back.png"
             alt={currCard.cards[0].code}
           />
         </div>
-        <div className="front">
+        <div className="front" onClick={toggleTransform}>
           <img
             className="card"
             src={currCard.cards[0].image}
