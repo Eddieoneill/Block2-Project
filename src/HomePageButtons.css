@@ -1,6 +1,6 @@
 .button-container {
   display: grid;
-  grid-template-columns: 25% 25% 25%;
+  grid-template-columns: 25% 25%;
   justify-content: center;
   place-items: center;
 }

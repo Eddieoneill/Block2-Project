@@ -42,3 +42,10 @@
   background-color: rgb(131, 33, 33);
   color: rgb(245, 241, 44);
 }
+
+.hand-result {
+  display: flex;
+  color: aliceblue;
+  place-self: center;
+  margin-left: 10%;
+}

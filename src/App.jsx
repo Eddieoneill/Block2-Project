@@ -25,7 +25,16 @@ function App() {
   return (
     <>
       <nav className="nav-container">
-        <h1 id="page-title">Ed's Casino</h1>
+        <div className="container">
+          <h1 id="page-title">Ed's Casino</h1>
+          <button
+            id="home-button"
+            className="home-button"
+            onClick={() => navigate("/")}
+          >
+            Home
+          </button>
+        </div>
         <HomePageButtons />
         <button className="home-button" id="log-out">
           Log-Out

@@ -6,9 +6,6 @@ export default function HomePageButtons() {
 
   return (
     <div className="button-container">
-      <button className="home-button" onClick={() => navigate("/")}>
-        Home
-      </button>
       <button className="home-button" onClick={() => navigate("/poker")}>
         Poker
       </button>

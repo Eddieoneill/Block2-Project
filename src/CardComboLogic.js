@@ -319,7 +319,6 @@ class CardComboLogic {
     cards1.forEach((card) => combinedCards.push(card));
     cards2.forEach((card) => combinedCards.push(card));
 
-    console.log(combinedCards);
     if (CardComboLogic.checkRoyalStraightFlush(combinedCards) !== false) {
       return `${player} got Royal Flush!`;
     } else if (CardComboLogic.checkStraightFlush(combinedCards) !== false) {

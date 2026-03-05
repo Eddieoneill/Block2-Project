@@ -1,13 +1,35 @@
 import { useState, useEffect } from "react";
 import "./Card.css";
 
-export default function Card({ deckId, setUserCards, isFaceUp }) {
+export default function Card({
+  deckId,
+  setUserCard,
+  isFaceUp,
+  setDidRevel,
+  didReveal,
+  setIsBot,
+}) {
   const [currCard, setCurrCard] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isFlipped, setIsFlipped] = useState(false);
 
   const toggleTransform = (event) => {
+    let nodes =
+      event.target.parentNode.parentNode.parentNode.parentNode.childNodes;
+    if (!didReveal || setIsBot !== undefined) {
+      animateFlip(nodes, 0);
+    }
     setIsFlipped(!isFlipped);
+  };
+
+  const animateFlip = (nodes, i) => {
+    if (i >= nodes.length) {
+      setDidRevel(true);
+      if (setIsBot !== undefined) setIsBot(false);
+      return;
+    }
+    nodes[i].className = "card-sleeve flipped";
+    setTimeout(() => animateFlip(nodes, i + 1), 1000);
   };
 
   useEffect(() => {
@@ -16,7 +38,7 @@ export default function Card({ deckId, setUserCards, isFaceUp }) {
       .then((data) => {
         setCurrCard(data);
         setIsLoading(false);
-        setUserCards(data.cards[0]);
+        setUserCard(data.cards[0]);
       });
   }, []);
 
