@@ -26,7 +26,7 @@
   height: 2rem;
   width: 10%;
   justify-content: center;
-  justify-self: center;
+  justify-self: end;
   place-items: center;
   border-radius: 2rem;
   background-color: brown;
@@ -36,6 +36,7 @@
   font-style: oblique;
   font-weight: bold;
   margin-top: 0.4%;
+  margin-right: 2rem;
 }
 
 .new-game-button:hover {
@@ -48,4 +49,13 @@
   color: aliceblue;
   place-self: center;
   margin-left: 10%;
+}
+
+.result-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 100%;
+  margin-left: 20rem;
 }

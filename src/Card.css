@@ -27,7 +27,7 @@
 
 .card-sleeve:hover {
   cursor: pointer;
-  background-color: rgb(37, 56, 27, 0.6);
+  background-color: rgba(160, 255, 109, 0.7);
 }
 
 .back,

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import playButtonHoverSound from "./hoverSound.js";
 import HandResult from "./HandResult.jsx";
 import PokerContext from "./PokerContext";
+import DisplayResultAnimation from "./DisplayResultAnimation";
 
 export default function Poker() {
   const [newGameId, setNewGameId] = useState(0);
@@ -17,6 +18,8 @@ export default function Poker() {
   const [centerCards, setCenterCards] = useState([]);
   const [didReveal, setDidReveal] = useState(false);
   const [didBotReveal, setDidBotReveal] = useState(false);
+  const [gameResult, setGameResult] = useState([]);
+  const [isRemoved, setIsRemoved] = useState(false);
 
   const startNewGame = () => {
     setIsLoading(true);
@@ -29,6 +32,8 @@ export default function Poker() {
     setPlayerCard(null);
     setCenterCard(null);
     setDidBotReveal(false);
+    setGameResult([]);
+    setIsRemoved(false);
   };
 
   useEffect(() => {
@@ -67,15 +72,17 @@ export default function Poker() {
 
   return (
     <PokerContext.Provider
-      value={{ didReveal, setDidReveal, didBotReveal, setDidBotReveal }}
+      value={{
+        didReveal,
+        setDidReveal,
+        didBotReveal,
+        setDidBotReveal,
+        gameResult,
+        setGameResult,
+        isRemoved,
+        setIsRemoved,
+      }}
     >
-      <button
-        className="new-game-button"
-        onClick={startNewGame}
-        onMouseEnter={playButtonHoverSound}
-      >
-        New Game
-      </button>
       <div className="card-container">
         <div className="player-hand">
           <DrawCards
@@ -121,6 +128,14 @@ export default function Poker() {
           />
         </div>
       </div>
+      <button
+        className="new-game-button"
+        onClick={startNewGame}
+        onMouseEnter={playButtonHoverSound}
+      >
+        New Game
+      </button>
+      <DisplayResultAnimation />
     </PokerContext.Provider>
   );
 }

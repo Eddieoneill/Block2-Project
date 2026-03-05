@@ -7,42 +7,26 @@ import Blackjack from "./Blackjack";
 import HomeScreen from "./HomeScreen";
 import "./App.css";
 import playButtonHoverSound from "./hoverSound.js";
+import AppContext from "./AppContext";
+import PlayButton from "./PlayButton";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [account, setAccount] = useState(null);
   const navigate = useNavigate();
-
-  function PlayButton() {
-    const audio = new Audio("../public/BackgroundMusic.mp3");
-    audio.volume = 0.01;
-    const playMusic = (event) => {
-      if (event.target.innerHTML === "Play") {
-        event.target.innerHTML = "Pause";
-        audio.play();
-        audio.loop = true;
-      } else {
-        event.target.innerHTML = "Play";
-        audio.pause();
-      }
-    };
-    return (
-      <button
-        className="music-button"
-        onClick={playMusic}
-        onMouseEnter={playButtonHoverSound}
-      >
-        Play
-      </button>
-    );
-  }
+  const [isMusicPlaying, setIsMusicPlaying] = useState(false);
+  const [audio, setAudio] = useState(
+    new Audio("../public/BackgroundMusic.mp3"),
+  );
 
   useEffect(() => {
     if (!isLoggedIn) navigate("/login");
   }, []);
 
   return (
-    <>
+    <AppContext.Provider
+      value={{ isMusicPlaying, setIsMusicPlaying, audio, setAudio }}
+    >
       <div className="title-container">
         <h1 id="page-title">Ed's Casino</h1>
         <PlayButton />
@@ -77,7 +61,7 @@ function App() {
         <Route path="/poker" element={<Poker />} />
         <Route path="/blackjack" element={<Blackjack />} />
       </Routes>
-    </>
+    </AppContext.Provider>
   );
 }
 

@@ -11,6 +11,7 @@ html {
 .title-container {
   display: grid;
   grid-template-columns: 90% auto;
+  height: 5rem;
 }
 
 #page-title {
@@ -18,7 +19,6 @@ html {
   align-self: center;
   justify-self: center;
   margin-left: 13rem;
-  font-family: "Brush Script MT", cursive;
 }
 
 .music-button {

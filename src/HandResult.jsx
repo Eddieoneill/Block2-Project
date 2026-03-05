@@ -3,7 +3,8 @@ import { useEffect, useContext } from "react";
 import PokerContext from "./PokerContext";
 
 export default function HandResult({ userCards, centerCards, user, isBot }) {
-  const { didReveal, didBotReveal } = useContext(PokerContext);
+  const { didReveal, didBotReveal, gameResult, setGameResult } =
+    useContext(PokerContext);
   let uCards = userCards;
   let cCards = centerCards;
 
@@ -27,6 +28,15 @@ export default function HandResult({ userCards, centerCards, user, isBot }) {
   }, [userCards, centerCards]);
 
   let result = CardComboLogic.getBestCombo(uCards, cCards, user);
+
+  let arr = result.split(" ");
+  let tempResult = `${arr[arr.length - 2]}${arr[arr.length - 1]}`;
+
+  if (!isBot && gameResult.length === 0) {
+    setGameResult([tempResult]);
+  } else if (isBot && gameResult.length === 1) {
+    setGameResult([...gameResult, tempResult]);
+  }
 
   return <h2 className="hand-result">{result}</h2>;
 }
