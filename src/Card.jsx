@@ -51,6 +51,7 @@ export default function Card({
       <div
         key={currCard.cards[0].code}
         className={`card-sleeve ${isFlipped ? "flipped" : ""}`}
+        src="https://t3.ftcdn.net/jpg/02/76/29/70/240_F_276297089_WyP8nNMqA3ymVk5PnKPPZ3qvTsje6DPT.jpg"
       >
         <div className="card-sleeve-inner">
           <div className="front" onClick={toggleTransform}>

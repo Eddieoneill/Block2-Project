@@ -1,5 +1,9 @@
 html {
-  background-color: rgb(57, 131, 15);
+  background-image: url("./BackgroundImage.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
 
 body {
