@@ -39,3 +39,8 @@
 .back {
   transform: rotateY(180deg);
 }
+
+.loading {
+  height: 30%;
+  max-width: max-content;
+}

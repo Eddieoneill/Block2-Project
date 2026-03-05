@@ -6,21 +6,40 @@ html {
   height: 100vh;
   font-family: "Brush Script MT", cursive;
 }
-.nav-container {
+
+.title-container {
   display: grid;
-  height: 5rem;
-  grid-template-columns: 10% 80% auto;
-  background-color: rgb(172, 169, 32);
-  border-radius: 5rem;
+  grid-template-columns: 90% auto;
 }
 
 #page-title {
   display: flex;
   align-self: center;
   justify-self: center;
-  margin-left: 2rem;
+  margin-left: 13rem;
   color: aliceblue;
   font-family: "Brush Script MT", cursive;
+}
+
+.music-button {
+  display: flex;
+  height: 25%;
+  width: fit-content;
+  border-radius: 1rem;
+  justify-self: end;
+  margin-right: 2rem;
+  margin-top: 1rem;
+  background-color: brown;
+  color: rgb(204, 201, 34);
+  border-color: rgb(190, 190, 190);
+}
+
+.nav-container {
+  display: grid;
+  height: 5rem;
+  grid-template-columns: 10% 80% auto;
+  background-color: rgb(172, 169, 32);
+  border-radius: 5rem;
 }
 
 #log-out {

@@ -42,7 +42,14 @@ export default function Card({
       });
   }, []);
 
-  if (isLoading) return <div>Loading</div>;
+  if (isLoading)
+    return (
+      <img
+        className="loading"
+        src="./LoadingAnimation.gif"
+        alt="Loading Animation"
+      />
+    );
 
   if (!currCard) return;
 

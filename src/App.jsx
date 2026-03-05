@@ -18,13 +18,37 @@ function App() {
   const [account, setAccount] = useState(null);
   const navigate = useNavigate();
 
+  function PlayButton() {
+    const audio = new Audio("../public/BackgroundMusic.mp3");
+    audio.volume = 0.1;
+
+    const playMusic = (event) => {
+      if (event.target.innerHTML === "Play") {
+        event.target.innerHTML = "Pause";
+        audio.play();
+        audio.loop = true;
+      } else {
+        event.target.innerHTML = "Play";
+        audio.pause();
+      }
+    };
+    return (
+      <button className="music-button" onClick={playMusic}>
+        Play
+      </button>
+    );
+  }
+
   useEffect(() => {
     if (!isLoggedIn) navigate("/login");
   }, []);
 
   return (
     <>
-      <h1 id="page-title">Ed's Casino</h1>
+      <div className="title-container">
+        <h1 id="page-title">Ed's Casino</h1>
+        <PlayButton />
+      </div>
       <nav className="nav-container">
         <button
           id="home-button"
