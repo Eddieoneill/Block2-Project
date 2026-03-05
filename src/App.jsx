@@ -4,17 +4,10 @@ import HomePageButtons from "./HomePageButtons";
 import Login from "./Login";
 import Poker from "./Poker";
 import Blackjack from "./Blackjack";
+import HomeScreen from "./HomeScreen";
 import "./App.css";
 import playButtonHoverSound from "./hoverSound.js";
 
-function HomeScreen({ account }) {
-  if (!account) {
-    return <div>Account was not created</div>;
-  }
-
-  console.log(account);
-  return <h1>Welcome {account.userName} to Ed's Casino!</h1>;
-}
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [account, setAccount] = useState(null);
