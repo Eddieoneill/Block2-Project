@@ -3,7 +3,9 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import HomePageButtons from "./HomePageButtons";
 import Login from "./Login";
 import Poker from "./Poker";
+import Blackjack from "./Blackjack";
 import "./App.css";
+import playButtonHoverSound from "./hoverSound.js";
 
 function HomeScreen({ account }) {
   if (!account) {
@@ -20,8 +22,7 @@ function App() {
 
   function PlayButton() {
     const audio = new Audio("../public/BackgroundMusic.mp3");
-    audio.volume = 0.1;
-
+    audio.volume = 0.01;
     const playMusic = (event) => {
       if (event.target.innerHTML === "Play") {
         event.target.innerHTML = "Pause";
@@ -33,7 +34,11 @@ function App() {
       }
     };
     return (
-      <button className="music-button" onClick={playMusic}>
+      <button
+        className="music-button"
+        onClick={playMusic}
+        onMouseEnter={playButtonHoverSound}
+      >
         Play
       </button>
     );
@@ -54,11 +59,16 @@ function App() {
           id="home-button"
           className="home-button"
           onClick={() => navigate("/")}
+          onMouseEnter={playButtonHoverSound}
         >
           Home
         </button>
         <HomePageButtons />
-        <button className="home-button" id="log-out">
+        <button
+          className="home-button"
+          id="log-out"
+          onMouseEnter={playButtonHoverSound}
+        >
           Log-Out
         </button>
       </nav>
@@ -72,6 +82,7 @@ function App() {
           }
         />
         <Route path="/poker" element={<Poker />} />
+        <Route path="/blackjack" element={<Blackjack />} />
       </Routes>
     </>
   );

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./Login.css";
+import playButtonHoverSound from "./hoverSound.js";
 
 export default function Login({ setAccount, setIsLoggedIn }) {
   const navigate = useNavigate();
@@ -49,10 +50,20 @@ export default function Login({ setAccount, setIsLoggedIn }) {
           />
         </div>
         <div className="confirm">
-          <button className="login-button" id="login" onClick={buttonPressed}>
+          <button
+            className="login-button"
+            id="login"
+            onClick={buttonPressed}
+            onMouseEnter={playButtonHoverSound}
+          >
             Login
           </button>
-          <button className="login-button" id="create" onClick={buttonPressed}>
+          <button
+            className="login-button"
+            id="create"
+            onClick={buttonPressed}
+            onMouseEnter={playButtonHoverSound}
+          >
             Create
           </button>
         </div>

@@ -7,9 +7,7 @@ export default function DrawCards({
   newDeck,
   setUserCard,
   isFaceUp,
-  setDidRevel,
-  didReveal,
-  setIsBot,
+  isBot,
 }) {
   const [cards, setCards] = useState([]);
 
@@ -22,9 +20,7 @@ export default function DrawCards({
           deckId={deckId}
           setUserCard={setUserCard}
           isFaceUp={isFaceUp}
-          setDidRevel={setDidRevel}
-          didReveal={didReveal}
-          setIsBot={setIsBot}
+          isBot={isBot}
         />,
       );
     }

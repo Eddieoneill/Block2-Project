@@ -10,7 +10,7 @@
   width: 10rem;
   align-items: center;
   justify-content: center;
-  background-color: rgb(61, 95, 42);
+  background-color: rgb(61, 95, 42, 0.7);
   border-radius: 1rem;
 }
 
@@ -27,7 +27,7 @@
 
 .card-sleeve:hover {
   cursor: pointer;
-  background-color: rgb(37, 56, 27);
+  background-color: rgb(37, 56, 27, 0.6);
 }
 
 .back,
