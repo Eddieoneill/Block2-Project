@@ -24,7 +24,7 @@
 .new-game-button {
   display: flex;
   height: 2rem;
-  width: 70%;
+  width: 10%;
   justify-content: center;
   justify-self: center;
   place-items: center;
