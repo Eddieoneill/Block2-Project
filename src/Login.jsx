@@ -9,6 +9,10 @@ export default function Login({ setAccount, setIsLoggedIn }) {
   const [password, setPassword] = useState("");
 
   const buttonPressed = () => {
+    if (userName === "" || password === "") {
+      alert("Please enter useName and password");
+      return;
+    }
     setAccount({ userName, password });
     setIsLoggedIn(true);
     navigate("/");
@@ -17,14 +21,14 @@ export default function Login({ setAccount, setIsLoggedIn }) {
   const updateUserName = (event) => {
     let key = event.key;
 
-    if (key === "Enter") return;
+    if (key === "Enter" || key === "Tab") return;
     setUserName(event.target.value + key);
   };
 
   const updatePassword = (event) => {
     let key = event.key;
 
-    if (key === "Enter") return;
+    if (key === "Enter" || key === "Tab") return;
     setPassword(event.target.value + key);
   };
 

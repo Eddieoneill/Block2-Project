@@ -9,6 +9,7 @@ import "./App.css";
 import playButtonHoverSound from "./hoverSound.js";
 import AppContext from "./AppContext";
 import PlayButton from "./PlayButton";
+import UserInfo from "./UserInfo";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -18,14 +19,30 @@ function App() {
   const [audio, setAudio] = useState(
     new Audio("../public/BackgroundMusic.mp3"),
   );
+  const [credit, setCredit] = useState(200);
 
   useEffect(() => {
-    if (!isLoggedIn) navigate("/login");
-  }, []);
+    if (!isLoggedIn) {
+      navigate("/login");
+    } else {
+      navigate("/");
+    }
+  }, [isLoggedIn]);
 
   return (
     <AppContext.Provider
-      value={{ isMusicPlaying, setIsMusicPlaying, audio, setAudio }}
+      value={{
+        isMusicPlaying,
+        setIsMusicPlaying,
+        audio,
+        setAudio,
+        account,
+        setAccount,
+        setIsLoggedIn,
+        isLoggedIn,
+        credit,
+        setCredit,
+      }}
     >
       <div className="title-container">
         <h1 id="page-title">Ed's Casino</h1>
@@ -41,17 +58,14 @@ function App() {
           Home
         </button>
         <HomePageButtons />
-        <button
-          className="home-button"
-          id="log-out"
-          onMouseEnter={playButtonHoverSound}
-        >
-          Log-Out
-        </button>
+        <UserInfo setIsLoggedIn={setIsLoggedIn} />
       </nav>
 
       <Routes>
-        <Route path="/" element={<HomeScreen account={account} />} />
+        <Route
+          path="/"
+          element={<HomeScreen account={account} setCredit={setCredit} />}
+        />
         <Route
           path="/login"
           element={
@@ -59,7 +73,7 @@ function App() {
           }
         />
         <Route path="/poker" element={<Poker />} />
-        <Route path="/blackjack" element={<Blackjack />} />
+        <Route path="/blackjack" element={<Blackjack account={account} />} />
       </Routes>
     </AppContext.Provider>
   );

@@ -1,17 +1,21 @@
 import PokerContext from "./PokerContext";
+import AppContext from "./AppContext";
 import { useContext } from "react";
 
-export default function DisplayResultAnimation() {
+export default function DisplayResultAnimation({ betAmount }) {
   const { gameResult, isRemoved } = useContext(PokerContext);
+
   if (isRemoved) return;
 
   if (gameResult.length < 2) return;
 
-  return calculateResult(gameResult[0], gameResult[1]);
+  return calculateResult(gameResult[0], gameResult[1], betAmount);
 }
 
-const calculateResult = (player, bot) => {
-  const { setIsRemoved } = useContext(PokerContext);
+const calculateResult = (player, bot, betAmount) => {
+  const { credit, setCredit } = useContext(AppContext);
+  const { setIsRemoved, appliedFuns, setAppliedFuns } =
+    useContext(PokerContext);
   const winAnimation = (
     <img
       className="result-animation"
@@ -63,14 +67,21 @@ const calculateResult = (player, bot) => {
   const playerResult = dict[player];
   const botResult = dict[bot];
 
-  console.log(playerResult, botResult);
   const removeSelf = () => {
     setIsRemoved(true);
   };
 
   if (playerResult > botResult) {
+    if (!appliedFuns) {
+      setAppliedFuns(true);
+      setCredit(credit + betAmount);
+    }
     return winAnimation;
   } else if (playerResult < botResult) {
+    if (!appliedFuns) {
+      setAppliedFuns(true);
+      setCredit(credit - betAmount);
+    }
     return loseAnimation;
   } else {
     return drawAnimation;

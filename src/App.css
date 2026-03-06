@@ -29,20 +29,40 @@ html {
   justify-self: end;
   margin-right: 2rem;
   margin-top: 1rem;
-  background-color: brown;
-  color: rgb(204, 201, 34);
+  color: #f3e562;
   border-color: rgb(190, 190, 190);
 }
 
+.music-button {
+  background-image: linear-gradient(
+    to bottom right,
+    #9e6868 0%,
+    #ff3d3d 20%,
+    #ff6a6a 40%,
+    #a85555 60%,
+    #ff1f1f 80%,
+    #944545 100%
+  );
+}
+
 .music-button:hover {
-  background-color: rgb(131, 33, 33);
-  color: rgb(255, 252, 74);
+  color: #f4ff55;
+  border-color: rgb(255, 255, 255);
+  background-image: linear-gradient(
+    to bottom right,
+    #e0b2b2 0%,
+    #ff3d3d 20%,
+    #ff6a6a 40%,
+    #e0b2b2 60%,
+    #ff1f1f 80%,
+    #e0b2b2 100%
+  );
 }
 
 .nav-container {
   display: grid;
   height: 5rem;
-  grid-template-columns: 10% 80% auto;
+  grid-template-columns: 10% 75% auto;
   background-color: rgb(172, 169, 32, 0.8);
   border-radius: 5rem;
 }

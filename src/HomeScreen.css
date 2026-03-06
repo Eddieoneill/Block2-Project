@@ -1,3 +1,69 @@
-h1 {
+#homescreen-title {
   justify-self: center;
+  margin-top: 2rem;
+}
+
+#funds-title {
+  justify-self: center;
+  margin-top: 7rem;
+}
+
+.payment-container {
+  display: grid;
+  grid-template-rows: repeat(5, 20%);
+  margin-left: 25rem;
+  gap: 1rem;
+}
+
+.textbox-container {
+  display: grid;
+  grid-template-columns: 20% 40% auto;
+  align-content: center;
+}
+
+.payment-title {
+  display: flex;
+  justify-self: end;
+  margin-right: 2rem;
+  align-self: center;
+}
+
+.payment-input {
+  height: 2rem;
+  border-radius: 2rem;
+}
+
+#payment-button {
+  display: flex;
+  justify-self: center;
+  margin-top: 7rem;
+  color: rgb(204, 201, 34);
+  border-color: rgb(190, 190, 190);
+  font-size: 1rem;
+  font-style: oblique;
+  font-weight: bold;
+  border-radius: 1rem;
+  background-image: linear-gradient(
+    to bottom right,
+    #9e6868 0%,
+    #ff3d3d 20%,
+    #ff6a6a 40%,
+    #a85555 60%,
+    #ff1f1f 80%,
+    #944545 100%
+  );
+}
+
+#payment-button:hover {
+  color: #f4ff55;
+  border-color: rgb(255, 255, 255);
+  background-image: linear-gradient(
+    to bottom right,
+    #e0b2b2 0%,
+    #ff3d3d 20%,
+    #ff6a6a 40%,
+    #e0b2b2 60%,
+    #ff1f1f 80%,
+    #e0b2b2 100%
+  );
 }

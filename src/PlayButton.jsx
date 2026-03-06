@@ -5,9 +5,8 @@ import playButtonHoverSound from "./hoverSound.js";
 export default function PlayButton() {
   const { isMusicPlaying, setIsMusicPlaying, audio, setAudio } =
     useContext(AppContext);
-  console.log(isMusicPlaying);
   const playMusic = (event) => {
-    audio.volume = 0.1;
+    audio.volume = 0.05;
     if (!isMusicPlaying) {
       event.target.innerHTML = "Pause";
       audio.play();

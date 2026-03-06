@@ -1,45 +1,13 @@
-.login-container {
+.userInfo-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.logout-button {
   display: flex;
   justify-content: center;
+  place-content: center;
   align-items: center;
-  height: 85vh;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-rows: 5rem 5rem 5rem;
-}
-
-.grid-column {
-  display: grid;
-  grid-template-columns: 5rem 10rem;
-  align-items: center;
-}
-
-.login-text {
-  height: 2rem;
-  border-radius: 2rem;
-}
-
-.confirm {
-  display: grid;
-  grid-template-columns: 5rem 5rem;
-  justify-content: center;
-  height: 40%;
-  gap: 5px;
-}
-
-.login-title {
-  margin-right: 5rem;
-}
-
-.login-button {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  justify-content: center;
-  justify-self: center;
-  place-items: center;
   border-radius: 2rem;
   background-color: brown;
   color: rgb(204, 201, 34);
@@ -49,7 +17,7 @@
   font-weight: bold;
 }
 
-.login-button {
+.logout-button {
   background-image: linear-gradient(
     to bottom right,
     #9e6868 0%,
@@ -61,7 +29,7 @@
   );
 }
 
-.login-button:hover {
+.logout-button:hover {
   color: #f4ff55;
   border-color: rgb(255, 255, 255);
   background-image: linear-gradient(

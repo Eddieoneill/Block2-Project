@@ -15,7 +15,11 @@ export default function Card({ deckId, setUserCard, isFaceUp, isBot }) {
     let nodes =
       event.target.parentNode.parentNode.parentNode.parentNode.childNodes;
     if (!didReveal || (isBot === true && !didBotReveal)) {
-      animateFlip(nodes, 0);
+      if (nodes[0].className === "empty") {
+        animateFlip(nodes, 1);
+      } else {
+        animateFlip(nodes, 0);
+      }
     } else {
       playCardFlipSound();
     }

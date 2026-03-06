@@ -1,10 +1,13 @@
 import "./Poker.css";
 import DrawCards from "./DrawCards";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import playButtonHoverSound from "./hoverSound.js";
 import HandResult from "./HandResult.jsx";
 import PokerContext from "./PokerContext";
 import DisplayResultAnimation from "./DisplayResultAnimation";
+import AppContext from "./AppContext";
+import BetCredit from "./BetCredit";
 
 export default function Poker() {
   const [newGameId, setNewGameId] = useState(0);
@@ -20,6 +23,19 @@ export default function Poker() {
   const [didBotReveal, setDidBotReveal] = useState(false);
   const [gameResult, setGameResult] = useState([]);
   const [isRemoved, setIsRemoved] = useState(false);
+  const [appliedFuns, setAppliedFuns] = useState(false);
+  const { isLoggedIn, credit } = useContext(AppContext);
+  const [betAmount, setBetAmount] = useState(0);
+  const navigate = useNavigate();
+
+  if (!isLoggedIn) navigate("/login");
+
+  if (credit <= 0 && !didReveal) {
+    useEffect(() => {
+      alert("Please add funds before playing the game!");
+    }, []);
+    navigate("/");
+  }
 
   const startNewGame = () => {
     setIsLoading(true);
@@ -34,6 +50,8 @@ export default function Poker() {
     setDidBotReveal(false);
     setGameResult([]);
     setIsRemoved(false);
+    setAppliedFuns(false);
+    setBetAmount(0);
   };
 
   useEffect(() => {
@@ -81,10 +99,13 @@ export default function Poker() {
         setGameResult,
         isRemoved,
         setIsRemoved,
+        appliedFuns,
+        setAppliedFuns,
       }}
     >
       <div className="card-container">
         <div className="player-hand">
+          <br className="empty" />
           <DrawCards
             count={2}
             deckId={newDeck.deck_id}
@@ -112,6 +133,7 @@ export default function Poker() {
           />
         </div>
         <div className="player-hand">
+          <BetCredit betAmount={betAmount} setBetAmount={setBetAmount} />
           <DrawCards
             count={2}
             deckId={newDeck.deck_id}
@@ -135,7 +157,7 @@ export default function Poker() {
       >
         New Game
       </button>
-      <DisplayResultAnimation />
+      <DisplayResultAnimation betAmount={betAmount} />
     </PokerContext.Provider>
   );
 }
