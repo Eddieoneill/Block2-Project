@@ -31,10 +31,10 @@ export default function Poker() {
   if (!isLoggedIn) navigate("/login");
 
   if (credit <= 0 && !didReveal) {
+    navigate("/");
     useEffect(() => {
       alert("Please add funds before playing the game!");
     }, []);
-    navigate("/");
   }
 
   const startNewGame = () => {

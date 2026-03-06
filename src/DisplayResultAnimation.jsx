@@ -24,10 +24,26 @@ const calculateResult = (player, bot, betAmount) => {
       onClick={() => removeSelf()}
     />
   );
+  const superWinAnimation = (
+    <img
+      className="result-animation"
+      src="./Congrats.gif"
+      alt="Loading Animation"
+      onClick={() => removeSelf()}
+    />
+  );
   const loseAnimation = (
     <img
       className="result-animation"
       src="./Lose.gif"
+      alt="Loading Animation"
+      onClick={() => removeSelf()}
+    />
+  );
+  const superLoseAnimation = (
+    <img
+      className="result-animation"
+      src="./SuperLose.gif"
       alt="Loading Animation"
       onClick={() => removeSelf()}
     />
@@ -76,11 +92,18 @@ const calculateResult = (player, bot, betAmount) => {
       setAppliedFuns(true);
       setCredit(credit + betAmount);
     }
+
+    if (betAmount > 10000) {
+      return superWinAnimation;
+    }
     return winAnimation;
   } else if (playerResult < botResult) {
     if (!appliedFuns) {
       setAppliedFuns(true);
       setCredit(credit - betAmount);
+    }
+    if (betAmount > 10000) {
+      return superLoseAnimation;
     }
     return loseAnimation;
   } else {

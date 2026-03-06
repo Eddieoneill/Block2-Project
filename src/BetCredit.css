@@ -2,19 +2,23 @@
   display: grid;
   grid-template-rows: 70% auto;
   margin-right: 2rem;
+  height: 12rem;
 }
 
 .bet {
   display: flex;
   justify-self: center;
   align-self: center;
-  font-size: 2rem;
+  font-size: clamp(1px, 20px, 2rem);
+  width: fit-content;
 }
 
 .bet-button-container {
   display: grid;
   grid-template-columns: 50% 50%;
-  gap: 10%;
+  gap: 20%;
+  margin-right: 1rem;
+  margin-top: 10%;
 }
 
 .bet-button {
@@ -24,6 +28,9 @@
   border-color: rgb(190, 190, 190);
   font-size: 3rem;
   justify-content: center;
+  align-items: center;
+  height: 3rem;
+  width: 3rem;
 }
 
 .bet-button {
@@ -50,4 +57,11 @@
     #ff1f1f 80%,
     #e0b2b2 100%
   );
+}
+
+#allin {
+  height: 100%;
+  width: 8rem;
+  font-size: 20px;
+  justify-self: center;
 }

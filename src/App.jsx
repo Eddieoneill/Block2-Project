@@ -64,7 +64,13 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<HomeScreen account={account} setCredit={setCredit} />}
+          element={
+            <HomeScreen
+              account={account}
+              setCredit={setCredit}
+              credit={credit}
+            />
+          }
         />
         <Route
           path="/login"
