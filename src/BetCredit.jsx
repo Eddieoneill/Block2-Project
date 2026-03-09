@@ -31,7 +31,12 @@ export default function BetCredit({ betAmount, setBetAmount }) {
         <div className="bet">Bet: </div>
         <div className="bet">${betAmount}</div>
       </div>
-      <button id="allin" className="bet-button" onClick={betAll}>
+      <button
+        id="allin"
+        className="bet-button"
+        onClick={betAll}
+        onMouseEnter={playButtonHoverSound}
+      >
         ALL-IN
       </button>
       <div className="bet-button-container">

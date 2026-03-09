@@ -1,6 +1,7 @@
 import "./HomeScreen.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import playButtonHoverSound from "./hoverSound.js";
 
 export default function HomeScreen({ account, setCredit, credit }) {
   const [amount, setAmount] = useState(0);
@@ -16,7 +17,6 @@ export default function HomeScreen({ account, setCredit, credit }) {
     let key = event.key;
     const currValue = Number(event.target.value + key);
     if (key === "Enter" || key === "Tab" || !currValue) return;
-    console.log(amount);
 
     setAmount(currValue);
   };
@@ -61,7 +61,11 @@ export default function HomeScreen({ account, setCredit, credit }) {
           <input type="number" className="payment-input" />
         </div>
       </div>
-      <button id="payment-button" onClick={updateCredit}>
+      <button
+        id="payment-button"
+        onClick={updateCredit}
+        onMouseEnter={playButtonHoverSound}
+      >
         Make Payment
       </button>
     </div>
