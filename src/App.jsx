@@ -12,14 +12,26 @@ import PlayButton from "./PlayButton";
 import UserInfo from "./UserInfo";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [account, setAccount] = useState(null);
+  const storedUserName = localStorage.getItem("username");
+  const storedPassword = localStorage.getItem("password");
+  const storedCredit = localStorage.getItem("credit");
+  const storedLoginStatus = localStorage.getItem("logged-in");
+  const [account, setAccount] = useState(() => {
+    return storedUserName && storedPassword
+      ? { userName: storedUserName, password: storedPassword }
+      : null;
+  });
+  const [isLoggedIn, setIsLoggedIn] = useState(() =>
+    storedLoginStatus ? storedLoginStatus : false,
+  );
   const navigate = useNavigate();
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const [audio, setAudio] = useState(
     new Audio("../public/BackgroundMusic.mp3"),
   );
-  const [credit, setCredit] = useState(200);
+  const [credit, setCredit] = useState(() =>
+    storedCredit ? Number(storedCredit) : 0,
+  );
 
   useEffect(() => {
     if (!isLoggedIn) {
@@ -75,7 +87,11 @@ function App() {
         <Route
           path="/login"
           element={
-            <Login setAccount={setAccount} setIsLoggedIn={setIsLoggedIn} />
+            <Login
+              setAccount={setAccount}
+              setIsLoggedIn={setIsLoggedIn}
+              setCredit={setCredit}
+            />
           }
         />
         <Route path="/poker" element={<Poker />} />

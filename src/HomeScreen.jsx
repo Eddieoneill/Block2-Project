@@ -27,7 +27,8 @@ export default function HomeScreen({ account, setCredit, credit }) {
       return;
     }
 
-    setCredit(credit + amount);
+    localStorage.setItem(`credit`, Number(credit) + amount);
+    setCredit(Number(credit) + amount);
   };
 
   return (

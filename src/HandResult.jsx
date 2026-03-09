@@ -29,14 +29,14 @@ export default function HandResult({ userCards, centerCards, user, isBot }) {
 
   let result = CardComboLogic.getBestCombo(uCards, cCards, user);
 
-  let arr = result.split(" ");
+  let arr = result[0].split(" ");
   let tempResult = `${arr[arr.length - 2]}${arr[arr.length - 1]}`;
 
   if (!isBot && gameResult.length === 0) {
-    setGameResult([tempResult]);
+    setGameResult([[tempResult, result[1]]]);
   } else if (isBot && gameResult.length === 1) {
-    setGameResult([...gameResult, tempResult]);
+    setGameResult([...gameResult, [tempResult, result[1]]]);
   }
 
-  return <h2 className="hand-result">{result}</h2>;
+  return <h2 className="hand-result">{result[0]}</h2>;
 }

@@ -320,25 +320,46 @@ class CardComboLogic {
     cards2.forEach((card) => combinedCards.push(card));
 
     if (CardComboLogic.checkRoyalStraightFlush(combinedCards) !== false) {
-      return `${player} got Royal Flush!`;
+      return [
+        `${player} got Royal Flush!`,
+        CardComboLogic.checkRoyalStraightFlush(combinedCards),
+      ];
     } else if (CardComboLogic.checkStraightFlush(combinedCards) !== false) {
-      return `${player} got Straight Flush!`;
+      return [
+        `${player} got Straight Flush!`,
+        CardComboLogic.checkStraightFlush(combinedCards),
+      ];
     } else if (CardComboLogic.checkQuads(combinedCards) !== false) {
-      return `${player} got Quads!`;
+      return [`${player} got Quads!`, CardComboLogic.checkQuads(combinedCards)];
     } else if (CardComboLogic.checkFullHouse(combinedCards) !== false) {
-      return `${player} got Full House!`;
+      return [
+        `${player} got Full House!`,
+        CardComboLogic.checkFullHouse(combinedCards),
+      ];
     } else if (CardComboLogic.checkFlush(combinedCards) !== false) {
-      return `${player} got Flush!`;
+      return [`${player} got Flush!`, CardComboLogic.checkFlush(combinedCards)];
     } else if (CardComboLogic.checkStraight(combinedCards) !== false) {
-      return `${player} got Straight!`;
+      return [
+        `${player} got Straight!`,
+        CardComboLogic.checkStraight(combinedCards),
+      ];
     } else if (CardComboLogic.checkTriple(combinedCards) !== false) {
-      return `${player} got Three of a Kind!`;
+      return [
+        `${player} got Three of a Kind!`,
+        CardComboLogic.checkTriple(combinedCards),
+      ];
     } else if (CardComboLogic.checkTwoPair(combinedCards) !== false) {
-      return `${player} got Two Pair!`;
+      return [
+        `${player} got Two Pair!`,
+        CardComboLogic.checkTwoPair(combinedCards),
+      ];
     } else if (CardComboLogic.checkPair(combinedCards) !== false) {
-      return `${player} got a Pair!`;
+      return [`${player} got a Pair!`, CardComboLogic.checkPair(combinedCards)];
     } else {
-      return `${player} got ${CardComboLogic.highCard(cards1)} High!`;
+      return [
+        `${player} got ${CardComboLogic.highCard(cards1)} High!`,
+        CardComboLogic.highCard(cards1),
+      ];
     }
   }
 }

@@ -3,19 +3,46 @@ import { useState } from "react";
 import "./Login.css";
 import playButtonHoverSound from "./hoverSound.js";
 
-export default function Login({ setAccount, setIsLoggedIn }) {
+export default function Login({ setAccount, setIsLoggedIn, setCredit }) {
   const navigate = useNavigate();
+  const storedUserName = localStorage.getItem("username");
+  const storedPassword = localStorage.getItem("password");
+  const storedCredit = localStorage.getItem("credit");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
-  const buttonPressed = () => {
+  const createButtonPressed = () => {
     if (userName === "" || password === "") {
       alert("Please enter useName and password");
       return;
     }
+
+    localStorage.setItem(`username`, userName);
+    localStorage.setItem(`password`, password);
+    localStorage.setItem(`credit`, 200);
+    localStorage.setItem(`logged-in`, true);
+
     setAccount({ userName, password });
+    setCredit(200);
     setIsLoggedIn(true);
     navigate("/");
+  };
+
+  const loginButtonPressed = () => {
+    if (userName === "" || password === "" || !storedUserName) {
+      alert("username or password is incorrect");
+      return;
+    }
+
+    if (userName === storedUserName && password === storedPassword) {
+      localStorage.setItem(`logged-in`, true);
+      setAccount({ userName, password });
+      setCredit(Number(storedCredit));
+      setIsLoggedIn(true);
+      navigate("/");
+    } else {
+      alert("username or password is incorrect");
+    }
   };
 
   const updateUserName = (event) => {
@@ -49,7 +76,7 @@ export default function Login({ setAccount, setIsLoggedIn }) {
           <input
             className="login-text"
             id="password"
-            type="text"
+            type="password"
             onKeyDown={updatePassword}
           />
         </div>
@@ -57,7 +84,7 @@ export default function Login({ setAccount, setIsLoggedIn }) {
           <button
             className="login-button"
             id="login"
-            onClick={buttonPressed}
+            onClick={loginButtonPressed}
             onMouseEnter={playButtonHoverSound}
           >
             Login
@@ -65,7 +92,7 @@ export default function Login({ setAccount, setIsLoggedIn }) {
           <button
             className="login-button"
             id="create"
-            onClick={buttonPressed}
+            onClick={createButtonPressed}
             onMouseEnter={playButtonHoverSound}
           >
             Create

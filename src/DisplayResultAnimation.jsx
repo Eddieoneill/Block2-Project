@@ -80,17 +80,48 @@ const calculateResult = (player, bot, betAmount) => {
     "3High!": -10,
     "2High!": -11,
   };
-  const playerResult = dict[player];
-  const botResult = dict[bot];
+  let playerResult = dict[player[0]];
+  let botResult = dict[bot[0]];
 
   const removeSelf = () => {
     setIsRemoved(true);
   };
 
+  if (playerResult === botResult) {
+    if (playerResult === 2 || playerResult === 4 || playerResult === 8) {
+      if (Number(player[1]) > Number(bot[1])) {
+        playerResult = 1;
+        botResult = 0;
+      } else if (Number(player[1]) < Number(bot[1])) {
+        playerResult = 0;
+        botResult = 1;
+      }
+    } else if (playerResult === 3) {
+      let playerBestPair = player[1].split(", ");
+      playerBestPair =
+        Number(playerBestPair[0]) > Number(playerBestPair[1])
+          ? Number(playerBestPair[0])
+          : Number(playerBestPair[1]);
+      let botBestPair = bot[1].split(", ");
+      botBestPair =
+        Number(botBestPair[0]) > Number(botBestPair[1])
+          ? Number(botBestPair[0])
+          : Number(botBestPair[1]);
+      if (playerBestPair > botBestPair) {
+        playerResult = 1;
+        botResult = 0;
+      } else if (playerBestPair < botBestPair) {
+        playerResult = 0;
+        botResult = 1;
+      }
+    }
+  }
+
   if (playerResult > botResult) {
     if (!appliedFuns) {
       setAppliedFuns(true);
-      setCredit(credit + betAmount);
+      localStorage.setItem(`credit`, Number(credit) + betAmount);
+      setCredit(Number(credit) + betAmount);
     }
 
     if (betAmount > 10000) {
@@ -100,7 +131,8 @@ const calculateResult = (player, bot, betAmount) => {
   } else if (playerResult < botResult) {
     if (!appliedFuns) {
       setAppliedFuns(true);
-      setCredit(credit - betAmount);
+      localStorage.setItem(`credit`, Number(credit) - betAmount);
+      setCredit(Number(credit) - betAmount);
     }
     if (betAmount > 10000) {
       return superLoseAnimation;
