@@ -28,7 +28,7 @@ export default function PlayButton() {
         onClick={playMusic}
         onMouseEnter={playButtonHoverSound}
       >
-        Pause
+        Stop BGM
       </button>
     );
   } else {

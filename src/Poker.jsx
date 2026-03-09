@@ -78,13 +78,24 @@ export default function Poker() {
     setCenterCards([...centerCards, centerCard]);
   }, [centerCard]);
 
+  const playCardFlipSound = (i) => {
+    if (i > 7) return;
+    const audio = new Audio("../public/CardFlipSound.mp3");
+    audio.volume = 0.2;
+    audio.play();
+    setTimeout(() => playCardFlipSound(i + 1), 100);
+  };
+
   if (isLoading)
     return (
-      <img
-        className="loading"
-        src="./LoadingAnimation.gif"
-        alt="Loading Animation"
-      />
+      <>
+        <img
+          className="loading"
+          src="./LoadingAnimation.gif"
+          alt="Loading Animation"
+        />
+        {playCardFlipSound(1)}
+      </>
     );
   if (!newDeck) return;
 

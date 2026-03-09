@@ -25,13 +25,19 @@ function App() {
     storedLoginStatus ? storedLoginStatus === "true" : false,
   );
   const navigate = useNavigate();
-  const [isMusicPlaying, setIsMusicPlaying] = useState(false);
+  const [isMusicPlaying, setIsMusicPlaying] = useState(true);
   const [audio, setAudio] = useState(
     new Audio("../public/BackgroundMusic.mp3"),
   );
   const [credit, setCredit] = useState(() =>
     storedCredit ? Number(storedCredit) : 0,
   );
+
+  useEffect(() => {
+    audio.play();
+    audio.loop = true;
+    audio.volume = 0.05;
+  }, []);
 
   useEffect(() => {
     if (!isLoggedIn) {

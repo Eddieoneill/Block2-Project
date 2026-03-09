@@ -46,7 +46,10 @@ export default function Login({ setAccount, setIsLoggedIn, setCredit }) {
       return account.userName.toLowerCase() === userName.toLowerCase();
     });
 
+    console.log(currAccount);
+
     if (
+      currAccount.length > 0 &&
       userName.toLowerCase() === currAccount[0].userName &&
       password === currAccount[0].password
     ) {

@@ -63,11 +63,13 @@ export default function Card({ deckId, setUserCard, isFaceUp, isBot }) {
 
   if (isLoading)
     return (
-      <img
-        className="loading"
-        src="./LoadingAnimation.gif"
-        alt="Loading Animation"
-      />
+      <>
+        <img
+          className="loading"
+          src="./LoadingAnimation.gif"
+          alt="Loading Animation"
+        />
+      </>
     );
 
   if (!currCard) return;
