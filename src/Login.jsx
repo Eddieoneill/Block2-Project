@@ -5,9 +5,9 @@ import playButtonHoverSound from "./hoverSound.js";
 
 export default function Login({ setAccount, setIsLoggedIn, setCredit }) {
   const navigate = useNavigate();
-  const storedUserName = localStorage.getItem("username");
-  const storedPassword = localStorage.getItem("password");
-  const storedCredit = localStorage.getItem("credit");
+  const accounts = JSON.parse(localStorage.getItem("accounts"))
+    ? JSON.parse(localStorage.getItem("accounts"))
+    : [];
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,27 +17,42 @@ export default function Login({ setAccount, setIsLoggedIn, setCredit }) {
       return;
     }
 
-    localStorage.setItem(`username`, userName);
+    localStorage.setItem(`userName`, userName.toLowerCase());
     localStorage.setItem(`password`, password);
     localStorage.setItem(`credit`, 200);
     localStorage.setItem(`logged-in`, true);
+    const account = {
+      userName: userName.toLowerCase(),
+      password,
+      credit: 200,
+    };
 
-    setAccount({ userName, password });
+    localStorage.setItem("accounts", JSON.stringify([...accounts, account]));
+
+    setAccount({ userName: userName.toLowerCase(), password });
     setCredit(200);
     setIsLoggedIn(true);
     navigate("/");
   };
 
   const loginButtonPressed = () => {
-    if (userName === "" || password === "" || !storedUserName) {
+    if (userName === "" || password === "" || !accounts) {
       alert("username or password is incorrect");
       return;
     }
 
-    if (userName === storedUserName && password === storedPassword) {
+    const currAccount = accounts.filter((account) => {
+      console.log(account);
+      return account.userName.toLowerCase() === userName.toLowerCase();
+    });
+
+    if (
+      userName.toLowerCase() === currAccount[0].userName &&
+      password === currAccount[0].password
+    ) {
       localStorage.setItem(`logged-in`, true);
-      setAccount({ userName, password });
-      setCredit(Number(storedCredit));
+      setAccount({ userName: userName.toLowerCase(), password });
+      setCredit(Number(currAccount[0].credit));
       setIsLoggedIn(true);
       navigate("/");
     } else {

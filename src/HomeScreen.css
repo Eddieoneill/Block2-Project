@@ -67,3 +67,8 @@
     #e0b2b2 100%
   );
 }
+
+#payment {
+  display: flex;
+  height: 2rem;
+}

@@ -6,6 +6,8 @@ import "./UserInfo.css";
 
 export default function UserInfo() {
   const { account, setAccount, setIsLoggedIn, credit } = useContext(AppContext);
+  const userAccounts = JSON.parse(localStorage.getItem("accounts"));
+  const storedCredit = localStorage.getItem("credit");
   const navigate = useNavigate();
 
   if (!account) return;
@@ -13,6 +15,18 @@ export default function UserInfo() {
   const { userName } = account;
 
   const logOutButtonPressed = () => {
+    let currAccount = userAccounts.filter(
+      (account) => account.userName === userName,
+    );
+
+    currAccount[0].credit = storedCredit;
+
+    let newAccounts = userAccounts.filter(
+      (account) => account.userName !== userName,
+    );
+    newAccounts.push(currAccount[0]);
+
+    localStorage.setItem(`accounts`, JSON.stringify(newAccounts));
     localStorage.setItem(`logged-in`, false);
     setAccount(null);
     setIsLoggedIn(false);

@@ -47,7 +47,11 @@ export default function HomeScreen({ account, setCredit, credit }) {
         <div className="textbox-container">
           <div className="payment-title">Card Number: </div>
           <input type="number" className="payment-input" />
-          <div>Card Type</div>
+          <img
+            src="../public/PaymentType.png"
+            alt="Payment type"
+            id="payment"
+          />
         </div>
         <div className="textbox-container">
           <div className="payment-title">Name on card: </div>
