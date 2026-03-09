@@ -5,12 +5,13 @@ import { useNavigate } from "react-router-dom";
 import "./UserInfo.css";
 
 export default function UserInfo() {
-  const { account, setAccount, setIsLoggedIn, credit } = useContext(AppContext);
+  const { account, setAccount, setIsLoggedIn, credit, isLoggedIn } =
+    useContext(AppContext);
   const userAccounts = JSON.parse(localStorage.getItem("accounts"));
   const storedCredit = localStorage.getItem("credit");
   const navigate = useNavigate();
 
-  if (!account) return;
+  if (!isLoggedIn) return;
 
   const { userName } = account;
 

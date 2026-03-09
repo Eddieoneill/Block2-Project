@@ -53,6 +53,9 @@ export default function Login({ setAccount, setIsLoggedIn, setCredit }) {
       localStorage.setItem(`logged-in`, true);
       setAccount({ userName: userName.toLowerCase(), password });
       setCredit(Number(currAccount[0].credit));
+      localStorage.setItem(`userName`, userName.toLowerCase());
+      localStorage.setItem(`password`, password);
+      localStorage.setItem(`credit`, currAccount[0].credit);
       setIsLoggedIn(true);
       navigate("/");
     } else {

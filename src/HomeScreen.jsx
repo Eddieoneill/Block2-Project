@@ -1,12 +1,14 @@
 import "./HomeScreen.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import playButtonHoverSound from "./hoverSound.js";
+import AppContext from "./AppContext";
 
 export default function HomeScreen({ account, setCredit, credit }) {
   const [amount, setAmount] = useState(0);
   const navigate = useNavigate();
-  if (!account) {
+  const { isLoggedIn } = useContext(AppContext);
+  if (!account || !isLoggedIn) {
     useEffect(() => {
       navigate("/login");
     });
@@ -26,14 +28,23 @@ export default function HomeScreen({ account, setCredit, credit }) {
       alert("please put in a valid amount");
       return;
     }
+    const isConfirmed = window.confirm(
+      `Are you sure you want to add $${amount} to account?`,
+    );
 
-    localStorage.setItem(`credit`, Number(credit) + amount);
-    setCredit(Number(credit) + amount);
+    if (isConfirmed) {
+      localStorage.setItem(`credit`, Number(credit) + amount);
+      setCredit(Number(credit) + amount);
+    } else {
+      alert("payment was cancelled");
+    }
   };
 
   return (
     <div>
-      <h1 id="homescreen-title">Welcome {account.userName}, to Ed's Casino!</h1>
+      <h1 id="homescreen-title">
+        Welcome {account.userName.toUpperCase()} to Ed's Casino!
+      </h1>
       <h2 id="funds-title">Add Funds!</h2>
       <div className="payment-container">
         <div className="textbox-container">

@@ -12,7 +12,7 @@ import PlayButton from "./PlayButton";
 import UserInfo from "./UserInfo";
 
 function App() {
-  const storedUserName = localStorage.getItem("username");
+  const storedUserName = localStorage.getItem("userName");
   const storedPassword = localStorage.getItem("password");
   const storedCredit = localStorage.getItem("credit");
   const storedLoginStatus = localStorage.getItem("logged-in");
@@ -22,7 +22,7 @@ function App() {
       : null;
   });
   const [isLoggedIn, setIsLoggedIn] = useState(() =>
-    storedLoginStatus ? storedLoginStatus : false,
+    storedLoginStatus ? storedLoginStatus === "true" : false,
   );
   const navigate = useNavigate();
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
